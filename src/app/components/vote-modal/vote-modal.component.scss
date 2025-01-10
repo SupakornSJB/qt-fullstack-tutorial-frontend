@@ -1,0 +1,27 @@
+.vote-choices {
+    button {
+        display: block;
+        width: 100%;
+        border-radius: 10px;
+        outline: 0;
+        border: 1px;
+        height: 50px;
+        transition: 200ms;
+    }
+
+    button:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    button.selected {
+        background-color: blue;
+        color: white;
+    }
+}
+
+.title-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

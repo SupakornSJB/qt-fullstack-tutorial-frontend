@@ -1,9 +1,12 @@
 nav {
-    a {
+    a:not(:last-child) {
         margin-right: 20px;
     }
+}
 
-    a:nth-child(n) {
-        margin-right: 0px;
-    }
+.page-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,2 +1,31 @@
 <main>
+    <form [formGroup]="voteInfo" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="Title">Title</label>
+          <input type="text" class="form-control" id="Title" aria-describedby="titleHelp" placeholder="Enter Title" formControlName="title">
+          <small id="titleHelp" class="form-text text-muted">Title</small>
+        </div>
+        <div class="form-group">
+          <label for="Description">Description</label>
+          <textarea class="form-control" id="Description" aria-describedby="descriptionHelp" placeholder="Enter Description" rows="8" formControlName="description"></textarea>
+          <small id="descriptionHelp" class="form-text text-muted">Description</small>
+        </div>
+        <div class="form-group">
+          <label for="Option">Option</label>
+          <div class="option-input">
+            <input type="text" class="form-control" id="Option" aria-describedby="optionHelp" placeholder="Enter New Option" formControlName="option">
+            <button class="btn btn-primary" (click)="addOption()" type="button">Add</button>
+          </div>
+          <small id="optionHelp" class="form-text text-muted">Option</small>
+        </div>
+    <hr>
+    <label for="Option">Current Option List</label>
+    <section class="option-list">
+        <button class="btn btn-outline-primary" *ngFor="let option of options; index as i" (click)="removeOption(i)" type="button">
+            <span>{{option}}</span>
+            <span class="option-remove-button">x</span>
+        </button>
+    </section>
+    <button class="btn btn-primary">Submit</button>
+    </form>
 </main>

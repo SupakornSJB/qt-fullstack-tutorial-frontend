@@ -1,0 +1,49 @@
+:host {
+    width: 100%;
+}
+
+main {
+    display: grid;
+    width: 60%;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    padding: 10px;
+    max-height: 50%;
+
+    .vote-topic-box {
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+       
+        .button-container button:not(:last-child) {
+           margin-right: 10px; 
+        }
+    }
+}
+
+.voter-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.voter {
+    width: 50%;
+
+    .voter-choice-container {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: auto auto;
+
+        .voter-choice {
+            cursor: pointer;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    }
+}

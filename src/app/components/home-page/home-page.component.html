@@ -1,1 +1,18 @@
-<p>home-page works!</p>
+<main>
+    <div *ngFor="let topic of voteTopics" class="vote-topic-box">
+        <span>{{topic.id}} {{topic.title}}</span>
+        <div class="button-container">
+            <button class="btn btn-primary" (click)="showVoteOnScreen(topic)">Vote</button>
+            <button class="btn btn-secondary" (click)="showReport(topic)">Report</button>
+        </div>
+    </div>
+</main>
+<nav>
+    <button (click)="goBackward()">
+        &lt;&lt;
+    </button>
+    <button (click)="goForward()">
+        &gt;&gt;
+    </button>
+</nav>
+<app-vote-modal #voteModal> </app-vote-modal>

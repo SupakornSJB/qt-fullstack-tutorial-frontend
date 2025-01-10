@@ -1,0 +1,30 @@
+<ng-template let-modal #modalTemplate>
+	<div class="modal-header">
+		<h4 class="modal-title" *ngIf="!statMode">Submit Vote</h4>
+		<h4 class="modal-title" *ngIf="statMode">Vote</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<div class="title-section">
+			<p>Topic: {{currentTitle}}</p>
+			<button class="btn btn-outline-primary" (click)="showDetail()">Detail</button>
+		</div>
+		<p *ngIf="showStat">Total Votes: {{totalVotesAmount}}</p>
+		<form class="vote-choices">
+			<button 
+				*ngFor="let option of options" 
+				[ngClass]="{'selected': selectedOptionContent.includes(option.content)}" 
+				type="button" 
+				(click)="addToVoted(option.content)"
+				[disabled]="statMode"
+			>
+				<b><span>{{option.content}} </span></b>
+				<span *ngIf="showStat">({{option.totalVotes}} Votes, {{option.totalVotes / totalVotesAmount | percent}})</span>
+			</button>
+		</form>
+	</div>
+	<div class="modal-footer" *ngIf="!statMode">
+		<button type="button" class="btn btn-outline-secondary" (click)="submitVote()">Save</button>
+	</div>
+</ng-template>
+<app-vote-description-modal #descriptionModal></app-vote-description-modal>
