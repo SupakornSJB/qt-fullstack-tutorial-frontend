@@ -25,8 +25,10 @@ export class VoteService {
     })
   }
 
-  getTopics(lastId: number): Observable<VoteTopic[]> {
-    return this.http.get<VoteTopic[]>(environment.backendUrl + `/VoteTopic?lastTopicId=${lastId}&amount=10`);
+  getTopics(lastId: number, reverse: boolean = false): Observable<VoteTopic[]> {
+    let url = environment.backendUrl + `/VoteTopic?lastTopicId=${lastId}&amount=10`;
+    if (reverse) url += "&reverse=true";
+    return this.http.get<VoteTopic[]>(url);
   }
 
   getOptions(voteTopicId: number): Observable<VoteOption[]> {

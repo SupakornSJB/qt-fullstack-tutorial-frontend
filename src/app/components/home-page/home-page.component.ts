@@ -31,15 +31,16 @@ export class HomePageComponent implements OnInit {
   }
 
   goForward() {
-    this.voteService.getTopics(this.lastId).subscribe((voteTopics) => {
-      this.voteTopics = voteTopics;
-      this.firstId = voteTopics[0].id;
-      this.lastId = voteTopics[voteTopics.length -1].id;
-    });
+    this.goPage(this.lastId);
   }
 
   goBackward() {
-    this.voteService.getTopics(this.lastId).subscribe((voteTopics) => {
+    this.goPage(this.firstId, true);
+  }
+
+  private goPage(cursorTopicId: number, reverse: boolean = false) {
+    this.voteService.getTopics(cursorTopicId, reverse).subscribe((voteTopics) => {
+      if (voteTopics.length === 0) return;
       this.voteTopics = voteTopics;
       this.firstId = voteTopics[0].id;
       this.lastId = voteTopics[voteTopics.length -1].id;
